@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "938465093399",
+    "project_id": "flutter-kiralaizle",
+    "storage_bucket": "flutter-kiralaizle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938465093399:android:b2cf4d418c39c1c6dfb952",
+        "android_client_info": {
+          "package_name": "com.example.flutter_kiralaizle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938465093399-n5qjfimucavd1eeg0dto42709kt5bfsn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsAnpi6HW3cfyeiFgDSD0CwL0JDGhl40s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938465093399-n5qjfimucavd1eeg0dto42709kt5bfsn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
