@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_kiralaizle/FirebaseServices/AuthServices/firebase_auth_service.dart';
+import 'package:flutter_kiralaizle/constants/constants.dart';
 import 'package:flutter_kiralaizle/constants/padding.dart';
 import 'package:flutter_kiralaizle/constants/routes.dart';
+import 'package:flutter_kiralaizle/screens/home/home.dart';
 import 'package:flutter_kiralaizle/widgets/primary_button/primary_button.dart';
 import 'package:flutter_kiralaizle/widgets/top_titles/top_titles.dart';
 
@@ -95,7 +98,15 @@ class _SignUpState extends State<SignUp> {
               ),
               PrimaryButton(
                 title: "Hesap Oluştur",
-                onPressed: () {},
+                onPressed: () async{
+                  bool isValidate = signUpValidation(email.text, sifre.text, phone.text, name.text);
+                  if(isValidate){
+                    bool createdAccount = await AuthService.instance.signUp(email.text, sifre.text,context);
+                    if(createdAccount){
+                      MainRoutes.instance.pushAndRemoveUntil(widget: Home(), context: context);
+                    }
+                  }
+                },
               ),
               SizedBox(
                 height: kToolbarHeight,

@@ -2,9 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_kiralaizle/FirebaseServices/AuthServices/firebase_auth_service.dart';
+import 'package:flutter_kiralaizle/constants/constants.dart';
 import 'package:flutter_kiralaizle/constants/padding.dart';
 import 'package:flutter_kiralaizle/constants/routes.dart';
 import 'package:flutter_kiralaizle/screens/aut_ui/sign_up/sign_up.dart';
+import 'package:flutter_kiralaizle/screens/home/home.dart';
 import 'package:flutter_kiralaizle/widgets/primary_button/primary_button.dart';
 import 'package:flutter_kiralaizle/widgets/top_titles/top_titles.dart';
 
@@ -56,7 +59,15 @@ class _LoginState extends State<Login> {
                 ),
               ),
               SizedBox(height: kToolbarHeight,),
-              PrimaryButton(title: "Giriş Yap", onPressed: (){},),
+              PrimaryButton(title: "Giriş Yap", onPressed: () async{
+                bool isValidate = loginValidation(email.text, sifre.text);
+                if(isValidate){
+                  bool isLogined = await AuthService.instance.login(email.text, sifre.text, context);
+                  if(isLogined){
+                    MainRoutes.instance.pushAndRemoveUntil(widget: Home(), context: context);
+                  }
+                }
+              },),
               SizedBox(height: kToolbarHeight,),
               Center(
                 child: Text("Henüz Hesabın Yok Mu?"),
