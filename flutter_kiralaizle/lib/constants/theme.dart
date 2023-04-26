@@ -26,6 +26,16 @@ ThemeData projeTheme = ThemeData(
     prefixIconColor: Colors.grey,
     suffixIconColor: Colors.grey,
   ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      foregroundColor: Colors.red,
+      side: BorderSide(
+        color: Colors.red,
+        width: 3
+      ),
+      textStyle: TextStyle(color: Colors.red),
+    )
+  )
 );
 
 
