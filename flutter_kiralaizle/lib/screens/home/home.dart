@@ -5,8 +5,10 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_kiralaizle/FirebaseServices/AuthServices/firebase_auth_service.dart';
 import 'package:flutter_kiralaizle/FirebaseServices/FireStoreService/firebase_store_service.dart';
 import 'package:flutter_kiralaizle/constants/padding.dart';
+import 'package:flutter_kiralaizle/constants/routes.dart';
 import 'package:flutter_kiralaizle/models/category_model/category_model.dart';
 import 'package:flutter_kiralaizle/models/product_model/product_model.dart';
+import 'package:flutter_kiralaizle/screens/product_details/product_details.dart';
 import 'package:flutter_kiralaizle/widgets/top_titles/top_titles.dart';
 
 class Home extends StatefulWidget {
@@ -117,12 +119,16 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: 45,
                       width: 140,
-                      child: OutlinedButton(onPressed: (){}, child: Text("Kirala"))),
+                      child: OutlinedButton(onPressed: (){
+                        MainRoutes.instance.push(widget: ProductDetails(productDetails: product), context: context);
+                      }, child: Text("Kirala")
+                      ),
+                      ),
                   ],
                 ),
               );
             },
-          )
+          ),
               ],
             ),
         ));
