@@ -30,4 +30,16 @@ class StoreService{
       return [];
     }
   }
+
+
+  Future<List<ProductModel>> getCategoryView(String id) async{
+    try {
+      QuerySnapshot<Map<String,dynamic>> querySnapshot = await _firestore.collection("categories").doc(id).collection("products").get();
+      List<ProductModel> productList = querySnapshot.docs.map((e) => ProductModel.fromJson(e.data())).toList();
+      return productList; 
+    } catch (e) {
+      showMessage(e.toString());
+      return [];
+    }
+  }
 }
