@@ -17,6 +17,14 @@ class SingleCard extends StatefulWidget {
 
 class _SingleCardState extends State<SingleCard> {
   int qty = 1;
+
+  @override
+  void initState() {
+    qty = widget.cartProduct.qty??1;
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
