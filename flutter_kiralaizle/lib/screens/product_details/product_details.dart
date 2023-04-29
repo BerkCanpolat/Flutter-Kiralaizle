@@ -80,7 +80,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                     child: OutlinedButton(
                       onPressed: (){
                         AppProvider appProvider = Provider.of<AppProvider>(context, listen: false);
-                        appProvider.addCartProduct(widget.productDetails);
+                        ProductModel model = widget.productDetails.copyWith(qty: qty);
+                        appProvider.addCartProduct(model);
                         showMessage("Film Kart'a Eklendi!");
                       }, 
                       child: Text("Karta Ekle"),
