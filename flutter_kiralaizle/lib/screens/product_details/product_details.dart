@@ -124,12 +124,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                     width: 145,
                     child: ElevatedButton(
                       onPressed: () {
-                        MainRoutes.instance
-                            .push(widget: FavouriteScreen(), context: context);
+                        // MainRoutes.instance
+                        //     .push(widget: FavouriteScreen(), context: context);
                       },
                       child: Text("Satın al"),
                     ),
                   ),
+                  SizedBox(height: 150,),
                 ],
               ),
             ],
