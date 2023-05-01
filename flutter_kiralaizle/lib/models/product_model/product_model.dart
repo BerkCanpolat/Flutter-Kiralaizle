@@ -49,6 +49,7 @@ class ProductModel {
         "description": description,
         "status": status,
         "qty": qty,
+        "isFavourite": isFavourite,
     };
     @override
     ProductModel copyWith({
