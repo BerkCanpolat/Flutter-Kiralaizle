@@ -18,4 +18,24 @@ class AppProvider with ChangeNotifier{
 
   List<ProductModel> get getCardProductList => _cartProductList;
 
+
+
+
+  //// FAVOURİTE ////
+  
+  List<ProductModel> _cartFavouritetList = [];
+
+  void addFavouriteProduct(ProductModel productModel){
+    _cartFavouritetList.add(productModel);
+    notifyListeners();
+  }
+
+
+  void removeFavouriteProduct(ProductModel productModel){
+    _cartFavouritetList.remove(productModel);
+    notifyListeners();
+  }
+
+  List<ProductModel> get getFavouritedProductList => _cartFavouritetList;
+
 }
