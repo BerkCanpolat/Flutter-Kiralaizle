@@ -6,6 +6,7 @@ import 'package:flutter_kiralaizle/FirebaseServices/AuthServices/firebase_auth_s
 import 'package:flutter_kiralaizle/constants/constants.dart';
 import 'package:flutter_kiralaizle/constants/padding.dart';
 import 'package:flutter_kiralaizle/constants/routes.dart';
+import 'package:flutter_kiralaizle/screens/Custom_Appbar/custom_appbar.dart';
 import 'package:flutter_kiralaizle/screens/home/home.dart';
 import 'package:flutter_kiralaizle/widgets/primary_button/primary_button.dart';
 import 'package:flutter_kiralaizle/widgets/top_titles/top_titles.dart';
@@ -101,9 +102,9 @@ class _SignUpState extends State<SignUp> {
                 onPressed: () async{
                   bool isValidate = signUpValidation(email.text, sifre.text, phone.text, name.text);
                   if(isValidate){
-                    bool createdAccount = await AuthService.instance.signUp(email.text, sifre.text,context);
+                    bool createdAccount = await AuthService.instance.signUp(name.text,email.text, sifre.text,context);
                     if(createdAccount){
-                      MainRoutes.instance.pushAndRemoveUntil(widget: Home(), context: context);
+                      MainRoutes.instance.pushAndRemoveUntil(widget: CustomBottomBar(), context: context);
                     }
                   }
                 },

@@ -8,9 +8,11 @@ import 'package:flutter_kiralaizle/constants/padding.dart';
 import 'package:flutter_kiralaizle/constants/routes.dart';
 import 'package:flutter_kiralaizle/models/category_model/category_model.dart';
 import 'package:flutter_kiralaizle/models/product_model/product_model.dart';
+import 'package:flutter_kiralaizle/provider/provider.dart';
 import 'package:flutter_kiralaizle/screens/category_view/category_view.dart';
 import 'package:flutter_kiralaizle/screens/product_details/product_details.dart';
 import 'package:flutter_kiralaizle/widgets/top_titles/top_titles.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -41,6 +43,8 @@ class _HomeState extends State<Home> {
     // TODO: implement initState
     super.initState();
     categoriesDisplay();
+    AppProvider appProvider = Provider.of<AppProvider>(context,listen: false);
+    appProvider.getUserInfoFirebase();
   }
 
   @override
@@ -124,6 +128,7 @@ class _HomeState extends State<Home> {
                             child: Text("En İyi Filmler Boş"),
                           )
                         : GridView.builder(
+                          padding: EdgeInsets.only(bottom: 80),
                             shrinkWrap: true,
                             primary: false,
                             itemCount: productCategori.length,
