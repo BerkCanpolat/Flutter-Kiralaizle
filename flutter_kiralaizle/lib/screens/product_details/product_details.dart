@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_kiralaizle/ZTekrar/Tekrar_constants/tekrar_constants.dart';
 import 'package:flutter_kiralaizle/constants/constants.dart';
 import 'package:flutter_kiralaizle/constants/padding.dart';
 import 'package:flutter_kiralaizle/constants/routes.dart';
@@ -62,11 +61,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                         if (widget.productDetails.isFavourite!) {
                           appProvider
                               .addFavouriteProduct(widget.productDetails);
-                          tekrarMESAJ("Favoriye Eklendi!");
+                          showMessage("Favoriye Eklendi!");
                         } else {
                           appProvider
                               .removeFavouriteProduct(widget.productDetails);
-                          tekrarMESAJ("Favoriden Kaldırılrı!");
+                          showMessage("Favoriden Kaldırılrı!");
                         }
                       },
                       icon: Icon(appProvider.getFavouritedProductList.contains(widget.productDetails)
