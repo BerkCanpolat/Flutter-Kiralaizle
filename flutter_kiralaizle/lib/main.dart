@@ -1,11 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_kiralaizle/FirebaseServices/AuthServices/firebase_auth_service.dart';
+import 'package:flutter_kiralaizle/Service/FirebaseAuth.dart';
 import 'package:flutter_kiralaizle/constants/theme.dart';
 import 'package:flutter_kiralaizle/firebase_options.dart';
 import 'package:flutter_kiralaizle/provider/provider.dart';
-import 'package:flutter_kiralaizle/screens/Custom_Appbar/custom_appbar.dart';
-import 'package:flutter_kiralaizle/screens/aut_ui/welcome/welcome.dart';
+import 'package:flutter_kiralaizle/screens/auth/welcome/welcome.dart';
 import 'package:flutter_kiralaizle/screens/home/home.dart';
 import 'package:provider/provider.dart';
 
@@ -26,17 +25,17 @@ class MyApp extends StatelessWidget {
       create: (context) => AppProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: projeTheme,
         home: StreamBuilder(
           stream: AuthService.instance.getAuthChange,
           builder: (context, snapshot) {
             if(snapshot.hasData){
-              return CustomBottomBar();
+              return Home();
             }else{
               return Welcome();
             }
           },
-        )
+        ),
+        theme: themeData,
       ),
     );
   }

@@ -1,46 +1,42 @@
 import 'package:flutter/material.dart';
 
-ThemeData projeTheme = ThemeData(
+ThemeData themeData = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   primaryColor: Colors.black,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: Colors.black,
-      textStyle: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold
+      textStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17
       ),
+    ),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    errorBorder: _border,
+    enabledBorder: _border,
+    focusedBorder: _border,
+    disabledBorder: _border,
+    focusedErrorBorder: _border,
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: 
+        BorderSide(
+          color: Colors.black),
+          )
     ),
   ),
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.white,
+    centerTitle: true,
+    // color: Colors.black,
     elevation: 0.0,
-    iconTheme: IconThemeData(color: Colors.black),
-    toolbarTextStyle: TextStyle(color: Colors.black)
+    iconTheme: IconThemeData(color: Colors.black)
   ),
-  inputDecorationTheme: InputDecorationTheme(
-    border: mainBorder,
-    errorBorder: mainBorder,
-    disabledBorder: mainBorder,
-    focusedBorder: mainBorder,
-    prefixIconColor: Colors.grey,
-    suffixIconColor: Colors.grey,
-  ),
-  outlinedButtonTheme: OutlinedButtonThemeData(
-    style: OutlinedButton.styleFrom(
-      foregroundColor: Colors.red,
-      side: BorderSide(
-        color: Colors.red,
-        width: 3
-      ),
-      textStyle: TextStyle(color: Colors.red),
-    )
-  )
 );
 
-
-OutlineInputBorder mainBorder = OutlineInputBorder(
-  borderSide: BorderSide(
-    color: Colors.grey,
-  ),
+OutlineInputBorder _border = OutlineInputBorder(
+  borderSide: BorderSide(color: Colors.black),
 );
