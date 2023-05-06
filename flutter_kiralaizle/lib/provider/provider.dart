@@ -1,58 +1,42 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_kiralaizle/FirebaseServices/FireStoreService/firebase_store_service.dart';
-import 'package:flutter_kiralaizle/models/product_model/product_model.dart';
-import 'package:flutter_kiralaizle/models/user_model/user_model.dart';
+import 'package:flutter_kiralaizle/model/productModel.dart';
 
 class AppProvider with ChangeNotifier{
 
-  List<ProductModel> _cartProductList = [];
-  UserModel? _userModel;
+  List<ProductModel> _productProvider = [];
 
-  UserModel get getUserInformation => _userModel!;
+  List<ProductModel> get getProductProvider => _productProvider;
 
-  void addCartProduct(ProductModel productModel){
-    _cartProductList.add(productModel);
+  void addCart(ProductModel productModel){
+    _productProvider.add(productModel);
     notifyListeners();
   }
 
 
-  void removeCartProduct(ProductModel productModel){
-    _cartProductList.remove(productModel);
+  void removeCart(ProductModel productModel){
+    _productProvider.remove(productModel);
     notifyListeners();
   }
 
-  List<ProductModel> get getCardProductList => _cartProductList;
 
 
-
-
-  //// FAVOURİTE ////
+  ////// Favori Listeme EKlemek Ve Kaldırmak İçin ////////
   
-  List<ProductModel> _cartFavouritetList = [];
+  List<ProductModel> _productFavouriteProvider = [];
 
-  void addFavouriteProduct(ProductModel productModel){
-    _cartFavouritetList.add(productModel);
-    notifyListeners();
-  }
-
-
-  void removeFavouriteProduct(ProductModel productModel){
-    _cartFavouritetList.remove(productModel);
-    notifyListeners();
-  }
-
-  List<ProductModel> get getFavouritedProductList => _cartFavouritetList;
-
-
-
-  /////// UserInformation ////////////
+  List<ProductModel> get getFavouriteProduct => _productFavouriteProvider;
   
 
-  void getUserInfoFirebase() async{
-    _userModel = await StoreService.instace.getUserInformation();
+  void addFavouriteCart(ProductModel productModel){
+    _productFavouriteProvider.add(productModel);
     notifyListeners();
   }
-  
+
+
+  void removeFavouriteCart(ProductModel productModel){
+    _productFavouriteProvider.remove(productModel);
+    notifyListeners();
+  }
+
 
 }
