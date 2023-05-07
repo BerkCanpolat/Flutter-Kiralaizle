@@ -6,6 +6,7 @@ import 'package:flutter_kiralaizle/Service/FirebaseAuth.dart';
 import 'package:flutter_kiralaizle/constants/constants.dart';
 import 'package:flutter_kiralaizle/constants/routes.dart';
 import 'package:flutter_kiralaizle/screens/auth/signup/signUp.dart';
+import 'package:flutter_kiralaizle/screens/bottom_navigation_screen/bottom_navigation.dart';
 import 'package:flutter_kiralaizle/screens/home/home.dart';
 import 'package:flutter_kiralaizle/widgets/kiralaizletitle.dart';
 import 'package:flutter_kiralaizle/widgets/primaryButton.dart';
@@ -75,7 +76,7 @@ class _LoginState extends State<Login> {
               if(isValidate){
                 bool isLogined = await AuthService.instance.loginService(email.text, password.text, context);
                 if(isLogined){
-                  MainRoutes.instance.pushAndRemoveBack(widget: Home(), context: context);
+                  MainRoutes.instance.pushAndRemoveBack(widget: BottomNavigationScreen(), context: context);
                 }
               }
             },),

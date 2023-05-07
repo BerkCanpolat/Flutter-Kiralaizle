@@ -6,9 +6,11 @@ import 'package:flutter_kiralaizle/Service/FirebaseStore.dart';
 import 'package:flutter_kiralaizle/constants/routes.dart';
 import 'package:flutter_kiralaizle/model/categoryModel.dart';
 import 'package:flutter_kiralaizle/model/productModel.dart';
+import 'package:flutter_kiralaizle/provider/provider.dart';
 import 'package:flutter_kiralaizle/screens/categories%20view/categori_view.dart';
 import 'package:flutter_kiralaizle/screens/productDetails/product_details.dart';
 import 'package:flutter_kiralaizle/widgets/kiralaizletitle.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -38,6 +40,8 @@ class _HomeState extends State<Home> {
     // TODO: implement initState
     super.initState();
     categoriesDisplay();
+    AppProvider appProvider = Provider.of<AppProvider>(context,listen: false);
+    appProvider.getuserFirebase();
   }
 
   @override
