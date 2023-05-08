@@ -59,32 +59,7 @@ class AppProvider with ChangeNotifier{
   }
 
 
-  // void updateUserProfile(BuildContext context, UserModel userModel, File? file) async{
-  //   if(file == null){
-  //     showLoaderDialog(context);
-  //     _userModel = userModel;
-  //     await FirebaseFirestore.instance
-  //     .collection("Users")
-  //     .doc(_userModel?.id)
-  //     .set(_userModel!.toJson());
-  //     Navigator.of(context, rootNavigator: true).pop();
-  //     Navigator.pop(context);
-  //   }else{
-  //     showLoaderDialog(context);
-  //     String imageUrl = await StorageService.instance.uploadUserImage(file);
-  //     _userModel = userModel.copyWith(image: imageUrl);
-  //     await FirebaseFirestore.instance
-  //     .collection("Users")
-  //     .doc(_userModel?.id)
-  //     .set(_userModel!.toJson());
-  //     Navigator.of(context, rootNavigator: true).pop();
-  //     Navigator.pop(context);
-  //   }
-  //   showMessage("Profil Güncellendi");
-  //   notifyListeners();
-  // }
-
-  void kullaniciyiGuncelle(File? file, UserModel userModel,BuildContext context) async{
+  void updateUserProfile(BuildContext context, UserModel userModel, File? file) async{
     if(file == null){
       showLoaderDialog(context);
       _userModel = userModel;
@@ -93,17 +68,17 @@ class AppProvider with ChangeNotifier{
       .doc(_userModel?.id)
       .set(_userModel!.toJson());
       Navigator.of(context, rootNavigator: true).pop();
-      Navigator.of(context).pop();
+      Navigator.pop(context);
     }else{
       showLoaderDialog(context);
-      String imageUrl = await StorageService.instance.resimBilgileri(file);
+      String imageUrl = await StorageService.instance.uploadUserImage(file);
       _userModel = userModel.copyWith(image: imageUrl);
       await FirebaseFirestore.instance
       .collection("Users")
       .doc(_userModel?.id)
       .set(_userModel!.toJson());
       Navigator.of(context, rootNavigator: true).pop();
-      Navigator.of(context).pop();
+      Navigator.pop(context);
     }
     showMessage("Profil Güncellendi");
     notifyListeners();
