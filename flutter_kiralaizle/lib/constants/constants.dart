@@ -70,3 +70,18 @@ bool signUpValidate(String email, String password,String name, String phone){
     return true;
   }
 }
+
+bool changePasword(String newPassword, String confirmPassword){
+  if(newPassword.isEmpty && confirmPassword.isEmpty){
+    showMessage("Şifreler Boş!");
+    return false;
+  }else if(newPassword.isEmpty){
+    showMessage("Yeni Şifre Boş!");
+    return false;
+  }else if(confirmPassword.isEmpty){
+    showMessage("Yeni Şifre Boş!");
+    return false;
+  }else{
+    return true;
+  }
+}

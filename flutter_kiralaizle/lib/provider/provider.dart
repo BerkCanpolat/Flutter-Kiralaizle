@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_kiralaizle/Service/FirebaseAuth.dart';
 import 'package:flutter_kiralaizle/Service/FirebaseStore.dart';
 import 'package:flutter_kiralaizle/Service/Firebase_storage.dart';
 import 'package:flutter_kiralaizle/constants/constants.dart';
@@ -57,29 +59,53 @@ class AppProvider with ChangeNotifier{
   }
 
 
+  // void updateUserProfile(BuildContext context, UserModel userModel, File? file) async{
+  //   if(file == null){
+  //     showLoaderDialog(context);
+  //     _userModel = userModel;
+  //     await FirebaseFirestore.instance
+  //     .collection("Users")
+  //     .doc(_userModel?.id)
+  //     .set(_userModel!.toJson());
+  //     Navigator.of(context, rootNavigator: true).pop();
+  //     Navigator.pop(context);
+  //   }else{
+  //     showLoaderDialog(context);
+  //     String imageUrl = await StorageService.instance.uploadUserImage(file);
+  //     _userModel = userModel.copyWith(image: imageUrl);
+  //     await FirebaseFirestore.instance
+  //     .collection("Users")
+  //     .doc(_userModel?.id)
+  //     .set(_userModel!.toJson());
+  //     Navigator.of(context, rootNavigator: true).pop();
+  //     Navigator.pop(context);
+  //   }
+  //   showMessage("Profil Güncellendi");
+  //   notifyListeners();
+  // }
 
-  void updateUserProfile(BuildContext context, UserModel userModel, File file) async{
+  void kullaniciyiGuncelle(File? file, UserModel userModel,BuildContext context) async{
     if(file == null){
+      showLoaderDialog(context);
       _userModel = userModel;
       await FirebaseFirestore.instance
       .collection("Users")
-      .doc(_userModel!.id)
+      .doc(_userModel?.id)
       .set(_userModel!.toJson());
       Navigator.of(context, rootNavigator: true).pop();
-      Navigator.pop(context);
+      Navigator.of(context).pop();
     }else{
       showLoaderDialog(context);
-      String imageUrl = await StorageService.instance.uploadUserImage(file);
+      String imageUrl = await StorageService.instance.resimBilgileri(file);
       _userModel = userModel.copyWith(image: imageUrl);
       await FirebaseFirestore.instance
       .collection("Users")
-      .doc(_userModel!.id)
+      .doc(_userModel?.id)
       .set(_userModel!.toJson());
-      notifyListeners();
       Navigator.of(context, rootNavigator: true).pop();
-      Navigator.pop(context);
+      Navigator.of(context).pop();
     }
+    showMessage("Profil Güncellendi");
+    notifyListeners();
   }
-
-
 }

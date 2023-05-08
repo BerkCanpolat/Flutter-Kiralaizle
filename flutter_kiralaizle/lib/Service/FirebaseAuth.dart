@@ -39,4 +39,20 @@ class AuthService{
       return false;
     }
   }
+
+
+  Future<bool> changePassword(String password, BuildContext context) async{
+    try {
+      showLoaderDialog(context);
+      _auth.currentUser!.updatePassword(password);
+      Navigator.of(context, rootNavigator: true).pop();
+      showMessage("Şifre Güncellendi");
+      Navigator.pop(context);
+      return true;
+    }on FirebaseAuthException catch (e) {
+      Navigator.pop(context); 
+      showMessage(e.code.toString());
+      return false;
+    }
+  }
 }

@@ -2,17 +2,25 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_kiralaizle/model/userModel.dart';
 
 class StorageService {
   static StorageService instance = StorageService();
 
   final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
 
-  Future<String> uploadUserImage(File image) async {
+  // Future<String> uploadUserImage(File image) async {
+  //   String userUid = FirebaseAuth.instance.currentUser!.uid;
+  //   TaskSnapshot taskSnapshot =
+  //       await _firebaseStorage.ref(userUid).putFile(image);
+  //   String imageUrl = await taskSnapshot.ref.getDownloadURL();
+  //   return imageUrl;
+  // }
+
+  Future<String> resimBilgileri(File file) async{
     String userUid = FirebaseAuth.instance.currentUser!.uid;
-    TaskSnapshot taskSnapshot =
-        await _firebaseStorage.ref(userUid).putFile(image);
-    String imageUrl = await taskSnapshot.ref.getDownloadURL();
+    TaskSnapshot snapshot = await _firebaseStorage.ref(userUid).putFile(file);
+    String imageUrl = await snapshot.ref.getDownloadURL();
     return imageUrl;
   }
 }
