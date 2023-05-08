@@ -9,18 +9,11 @@ class StorageService {
 
   final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
 
-  // Future<String> uploadUserImage(File image) async {
-  //   String userUid = FirebaseAuth.instance.currentUser!.uid;
-  //   TaskSnapshot taskSnapshot =
-  //       await _firebaseStorage.ref(userUid).putFile(image);
-  //   String imageUrl = await taskSnapshot.ref.getDownloadURL();
-  //   return imageUrl;
-  // }
-
-  Future<String> resimBilgileri(File file) async{
+  Future<String> uploadUserImage(File image) async {
     String userUid = FirebaseAuth.instance.currentUser!.uid;
-    TaskSnapshot snapshot = await _firebaseStorage.ref(userUid).putFile(file);
-    String imageUrl = await snapshot.ref.getDownloadURL();
+    TaskSnapshot taskSnapshot =
+        await _firebaseStorage.ref(userUid).putFile(image);
+    String imageUrl = await taskSnapshot.ref.getDownloadURL();
     return imageUrl;
   }
 }
