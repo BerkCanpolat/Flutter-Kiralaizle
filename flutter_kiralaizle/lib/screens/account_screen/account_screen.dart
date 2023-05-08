@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_kiralaizle/constants/routes.dart';
 import 'package:flutter_kiralaizle/provider/provider.dart';
+import 'package:flutter_kiralaizle/screens/change_password/change_password.dart';
 import 'package:flutter_kiralaizle/screens/edit_page/edit_page.dart';
 import 'package:flutter_kiralaizle/widgets/primaryButton.dart';
 import 'package:provider/provider.dart';
@@ -38,8 +39,8 @@ class _AccountScreenState extends State<AccountScreen> {
                           size: 100,
                         )
                       : CircleAvatar(
-                        maxRadius: 50,
-                        child: Image.network(
+                        maxRadius: 60,
+                        backgroundImage: NetworkImage(
                             appProvider.getuserInformationProvider.image!),
                       ),
                   Text(appProvider.getuserInformationProvider.name!),
@@ -47,9 +48,6 @@ class _AccountScreenState extends State<AccountScreen> {
                     height: 5,
                   ),
                   Text(appProvider.getuserInformationProvider.email!),
-                  SizedBox(
-                    height: 12,
-                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: PrimaryButton(
@@ -92,7 +90,9 @@ class _AccountScreenState extends State<AccountScreen> {
                     leading: const Icon(Icons.support_agent),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      MainRoutes.instance.pushMain(widget: ChangePassword(), context: context);
+                    },
                     title: const Text("Change Password"),
                     leading: const Icon(Icons.change_circle),
                   ),

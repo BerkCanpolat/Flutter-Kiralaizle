@@ -22,16 +22,16 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<CategoryModel> categories = [];
   List<ProductModel> product = [];
-  bool isLoading = true;
+  bool isLoading = false;
 
   void categoriesDisplay() async{
     setState(() {
-      isLoading = true;
+      isLoading = !isLoading;
     });
     categories = await StoreService.instance.categoryModel();
     product = await StoreService.instance.productModel();
     setState(() {
-      isLoading = false;
+      isLoading = !isLoading;
     });
   }
 
