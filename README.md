@@ -19,3 +19,4 @@ KULLANILAN TEKNOLOJİLER
 
 
 Bu uygulamada Flutter - Firebase - Provider Kullanılmıştır.
+![1](https://github.com/BerkCanpolat/Flutter-Kiralaizle/assets/115354274/d8bf7da9-b33d-471d-adb4-a4353a7fec0d)
